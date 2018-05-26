@@ -795,10 +795,10 @@ var Header = function (_Component) {
         ),
         _react2.default.createElement(
           'section',
-          { className: 'pagination' },
+          { id: 'pagination' },
           _react2.default.createElement(
             'ul',
-            { className: 'pagination-nums' },
+            { className: 'pages' },
             _react2.default.createElement(
               'li',
               null,
@@ -806,7 +806,7 @@ var Header = function (_Component) {
             ),
             _react2.default.createElement(
               'li',
-              null,
+              { className: 'active' },
               '1'
             ),
             _react2.default.createElement(
