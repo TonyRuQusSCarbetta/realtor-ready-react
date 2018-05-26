@@ -1,10 +1,10 @@
 var listingsData = [
   {
-    address: '20-23 Grand ave',
-    city: 'San Francisco',
+    address: '77 Hollywood Blvd',
+    city: 'Los Angeles',
     state: 'CA',
     rooms: '3',
-    price: '2499000',
+    price: '2.5 Million',
     floorSpace: 6000,
     extras: [
       'garage',
@@ -12,31 +12,34 @@ var listingsData = [
       'gym'
     ],
     homeType: 'Apartment',
-    image: 'https://cdn.homedit.com/wp-content/uploads/2012/10/kitchen-island-industrial.jpg'
+    image:
+    'https://cdn.homedit.com/wp-content/uploads/2012/10/kitchen-island-industrial.jpg'
   },
 
   {
-    address: '17-18 Post Ave',
+    address: '17 Post Ave',
     city: 'New York City',
     state: 'NY',
     rooms: '2',
-    price: '1000000',
+    price: '1.5 Million',
     floorSpace: 3900,
     extras: [
       'elevator',
       'garage'
     ],
     homeType: 'Apartment',
-    image: 'https://cdn.vox-cdn.com/thumbor/FxSsbaksW3lxunrTcQDgCRBS3jY=/0x0:900x600/920x690/filters:focal(378x228:522x372):no_upscale()/cdn.vox-cdn.com/uploads/chorus_image/image/59780339/atelier85mil.0.0.gif'
+    image:
+    'https://cdn.vox-cdn.com/thumbor/d34hMccFF_L--7D3mmXX0nk9ro8=/0x0:900x600/920x690/filters:focal(378x228:522x372):format(webp):no_upscale()/cdn.vox-cdn.com/uploads/chorus_image/image/59780343/204413204.0.jpg'
+     // 'https://cdn.vox-cdn.com/thumbor/FxSsbaksW3lxunrTcQDgCRBS3jY=/0x0:900x600/920x690/filters:focal(378x228:522x372):no_upscale()/cdn.vox-cdn.com/uploads/chorus_image/image/59780339/atelier85mil.0.0.gif'
 
   },
 
   {
-    address: '305-310 Cutler Dr',
+    address: '306 Cutler Dr',
     city: 'Miami',
-    state: 'CA',
+    state: 'FL',
     rooms: '5',
-    price: '999000',
+    price: '950 Thousand',
     floorSpace: 11000,
     extras: [
       'finished basement',
@@ -50,27 +53,29 @@ var listingsData = [
   },
 
   {
-    address: '415-419 Union Square',
+    address: '42 Union Square',
     city: 'San Francisco',
     state: 'CA',
     rooms: '4',
-    price: '2999499',
+    price: '3 Million',
     floorSpace: 8000,
     extras: [
       'elevator',
       'gym'
     ],
     homeType: 'Apartment',
-    // image: 'https://www.dha.gov.au/images/default-source/default-album/liv-apartments---artist-rendor_870x340.jpg?sfvrsn=22c96b2b_0'
-    image: 'https://www.amli.com/AMLIContent/Files/apartments/denver/ridgegate/amenity-exterior/ridgegate-amenity-exterior-pool2.jpg'
+    image:
+    'http://www.allconceptcreation.fr/wp-content/uploads/2015/11/1201-laurel-way33.jpg'
+    //'https://www.dha.gov.au/images/default-source/default-album/liv-apartments---artist-rendor_870x340.jpg?sfvrsn=22c96b2b_0'
+     // 'https://www.amli.com/AMLIContent/Files/apartments/denver/ridgegate/amenity-exterior/ridgegate-amenity-exterior-pool2.jpg'
   },
 
   {
-    address: '30-33 Colfax Ave',
+    address: '30 Colfax Ave',
     city: 'Denver',
     state: 'CO',
     rooms: '3',
-    price: '649000',
+    price: '650 Thousand',
     floorSpace: 7000,
     extras: [
       'garage',
@@ -79,7 +84,58 @@ var listingsData = [
     ],
     homeType: 'Apartment',
     image: 'https://cdnblog.rentcafe.com/blog/wp-content/uploads/2017/03/best-rated-apartments-phoenix-featured.jpg'
-  }
+  },
+
+  {
+    address: '7 Star Blvd',
+    city: 'Houston',
+    state: 'TX',
+    rooms: '4',
+    price: '400 Thousand',
+    floorSpace: 7000,
+    extras: [
+      'garage',
+      'finished basement',
+      'gym'
+    ],
+    homeType: 'Apartment',
+    image: 'https://www.ansthailandrealestate.com/uploads/9/2/2/0/922085/17-copy-copy-770x386_1_orig.jpg'
+    //'http://www.allconceptcreation.fr/wp-content/uploads/2015/11/1201-laurel-way33.jpg'
+  },
+
+  {
+    address: '29 Sullivan Ave',
+    city: 'Daly City',
+    state: 'CA',
+    rooms: '3',
+    price: '800 Thousand',
+    floorSpace: 7000,
+    extras: [
+      'garage',
+      'finished basement',
+      'gym'
+    ],
+    homeType: 'Apartment',
+     image:
+      'http://media.pinterest.com.s3.amazonaws.com/750x/f2/e1/8c/f2e18c3d9f3f5280fde81135c2c3c31e.jpg'
+     //'https://bt-wpstatic.freetls.fastly.net/wp-content/blogs.dir/1238/files/2017/09/Jelmberg-Luxury-Estates-1024x402.jpg'
+  },
+
+  {
+    address: '4659 Bridgeway Point',
+    city: 'Atlanta',
+    state: 'GA',
+    rooms: '6',
+    price: '750 Thousand',
+    floorSpace: 7000,
+    extras: [
+      'garage',
+      'finished basement',
+      'gym'
+    ],
+    homeType: 'Apartment',
+    image: 'http://danielsteamhomes.com/agent_files/Luxury%20home.jpg'
+  },
 ]
 
 export default listingsData;

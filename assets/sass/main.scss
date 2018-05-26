@@ -16,6 +16,10 @@ body,
 html {
   font-family: 'Roboto', sans-serif;
   box-sizing: border-box;
+img{
+  object-fit: cover;
+  // object-position: 0% 23%;
+}
 }
 @import "listings";
 @import "content-area";
