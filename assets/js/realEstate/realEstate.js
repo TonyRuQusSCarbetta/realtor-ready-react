@@ -10,7 +10,16 @@ class App extends Component {
     super()
     this.state = {
       firstName: 'Tony',
-      listingsData
+      listingsData,
+      min_price: 0,
+      max_price: 10000000,
+      min_floor_space: 0,
+      min_floor_space: 50000,
+      elevator: false,
+      finished_basement: false,
+      garage: false,
+      gym: false,
+      swimming_pool: false
     }
 
     this.change = this.change.bind(this)
@@ -31,7 +40,7 @@ class App extends Component {
     return (<div>
       <Header />
       <section id="content-area">
-        <Filter change={this.change} />
+        <Filter change={this.change} globalState={this.state} />
         <Listings listingsData={this.state.listingsData} />
       </section>
       </div>)
