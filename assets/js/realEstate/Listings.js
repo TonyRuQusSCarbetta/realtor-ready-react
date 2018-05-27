@@ -32,7 +32,7 @@ export default class Header extends Component {
               <div className="listing-details">
                 <div className="floor-space">
                   <i className="far fa-square"></i>
-                  <span>1000ft&sup2;</span>
+                  <span>{listing.floorSpace}ft&sup2;</span>
                   <div className="bedrooms">
                     <i className="fas fa-bed"></i>
                     <span>{listing.bedrooms} bedrooms</span>
@@ -80,12 +80,6 @@ export default class Header extends Component {
 
 
       </section>
-
-
-
-
-
-
 
 
       <section id="pagination">

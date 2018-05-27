@@ -13,8 +13,8 @@ var listingsData = [{
   address: '77 Hollywood Blvd',
   city: 'Los Angeles',
   state: 'CA',
-  rooms: '3',
-  price: '2.5 Million',
+  bedrooms: '3',
+  price: '2499000',
   floorSpace: 6000,
   extras: ['garage', 'elevator', 'gym'],
   homeType: 'Apartment',
@@ -23,8 +23,8 @@ var listingsData = [{
   address: '17 Post Ave',
   city: 'New York City',
   state: 'NY',
-  rooms: '2',
-  price: '1.5 Million',
+  bedrooms: '2',
+  price: '1499000',
   floorSpace: 3900,
   extras: ['elevator', 'garage'],
   homeType: 'Apartment',
@@ -35,8 +35,8 @@ var listingsData = [{
   address: '306 Cutler Dr',
   city: 'Miami',
   state: 'FL',
-  rooms: '5',
-  price: '950 Thousand',
+  bedrooms: '5',
+  price: '949000',
   floorSpace: 11000,
   extras: ['finished basement', 'gym', 'garage', 'pool'],
   homeType: 'Apartment',
@@ -45,8 +45,8 @@ var listingsData = [{
   address: '42 Union Square',
   city: 'San Francisco',
   state: 'CA',
-  rooms: '4',
-  price: '3 Million',
+  bedrooms: '4',
+  price: '2999000',
   floorSpace: 8000,
   extras: ['elevator', 'gym'],
   homeType: 'Apartment',
@@ -57,9 +57,9 @@ var listingsData = [{
   address: '30 Colfax Ave',
   city: 'Denver',
   state: 'CO',
-  rooms: '3',
-  price: '650 Thousand',
-  floorSpace: 7000,
+  bedrooms: '3',
+  price: '649000',
+  floorSpace: 9000,
   extras: ['garage', 'finished basement', 'gym'],
   homeType: 'Apartment',
   image: 'https://cdnblog.rentcafe.com/blog/wp-content/uploads/2017/03/best-rated-apartments-phoenix-featured.jpg'
@@ -67,9 +67,9 @@ var listingsData = [{
   address: '7 Star Blvd',
   city: 'Houston',
   state: 'TX',
-  rooms: '4',
-  price: '400 Thousand',
-  floorSpace: 7000,
+  bedrooms: '4',
+  price: '499000',
+  floorSpace: 10000,
   extras: ['garage', 'finished basement', 'gym'],
   homeType: 'Apartment',
   image: 'https://www.ansthailandrealestate.com/uploads/9/2/2/0/922085/17-copy-copy-770x386_1_orig.jpg'
@@ -78,9 +78,9 @@ var listingsData = [{
   address: '29 Sullivan Ave',
   city: 'Daly City',
   state: 'CA',
-  rooms: '3',
-  price: '800 Thousand',
-  floorSpace: 7000,
+  bedrooms: '4',
+  price: '799000',
+  floorSpace: 12000,
   extras: ['garage', 'finished basement', 'gym'],
   homeType: 'Apartment',
   image: 'http://media.pinterest.com.s3.amazonaws.com/750x/f2/e1/8c/f2e18c3d9f3f5280fde81135c2c3c31e.jpg'
@@ -89,9 +89,9 @@ var listingsData = [{
   address: '4659 Bridgeway Point',
   city: 'Atlanta',
   state: 'GA',
-  rooms: '6',
-  price: '750 Thousand',
-  floorSpace: 7000,
+  bedrooms: '6',
+  price: '749000',
+  floorSpace: 17000,
   extras: ['garage', 'finished basement', 'gym'],
   homeType: 'Apartment',
   image: 'http://danielsteamhomes.com/agent_files/Luxury%20home.jpg'
@@ -135,6 +135,8 @@ var _listingsData2 = _interopRequireDefault(_listingsData);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
@@ -153,15 +155,27 @@ var App = function (_Component) {
     _this.state = {
       firstName: 'Tony',
       listingsData: _listingsData2.default
-
     };
+
+    _this.change = _this.change.bind(_this);
     return _this;
   }
 
   _createClass(App, [{
+    key: 'change',
+    value: function change(event) {
+      var _this2 = this;
+
+      var name = event.target.name;
+      var value = event.target.type === 'checkbox' ? event.target.checked : event.target.value;
+
+      this.setState(_defineProperty({}, name, value), function () {
+        console.log(_this2.state);
+      });
+    }
+  }, {
     key: 'render',
     value: function render() {
-      console.log(this.state.listingsData);
       return _react2.default.createElement(
         'div',
         null,
@@ -169,7 +183,7 @@ var App = function (_Component) {
         _react2.default.createElement(
           'section',
           { id: 'content-area' },
-          _react2.default.createElement(_Filter2.default, null),
+          _react2.default.createElement(_Filter2.default, { change: this.change }),
           _react2.default.createElement(_Listings2.default, { listingsData: this.state.listingsData })
         )
       );
@@ -242,38 +256,158 @@ var Filter = function (_Component) {
           ),
           _react2.default.createElement(
             'select',
-            { name: 'neighborhood', className: 'neighborhood' },
+            { name: 'neighborhood', className: 'neighborhood', onChange: this.props.change },
             _react2.default.createElement(
               'option',
               null,
-              'neighborhood'
+              'Location'
+            ),
+            _react2.default.createElement(
+              'option',
+              { value: 'San Francisco' },
+              'San Francisco'
+            ),
+            _react2.default.createElement(
+              'option',
+              { value: 'Miami' },
+              'Miami'
+            ),
+            _react2.default.createElement(
+              'option',
+              { value: 'New York City' },
+              'New York City'
+            ),
+            _react2.default.createElement(
+              'option',
+              { value: 'Los Angeles' },
+              'Los Angeles'
+            ),
+            _react2.default.createElement(
+              'option',
+              { value: 'Atlanta' },
+              'Atlanta'
+            ),
+            _react2.default.createElement(
+              'option',
+              { value: 'Denver' },
+              'Denver'
+            ),
+            _react2.default.createElement(
+              'option',
+              { value: 'Daly City' },
+              'Daly City'
+            ),
+            _react2.default.createElement(
+              'option',
+              { value: 'Houston' },
+              'Houston'
             )
           ),
           _react2.default.createElement(
             'select',
-            { name: 'housetype', className: 'housetype' },
+            { name: 'housetype', className: 'housetype', onChange: this.props.change },
             _react2.default.createElement(
               'option',
               null,
-              'house type'
+              'Home Type'
+            ),
+            _react2.default.createElement(
+              'option',
+              { value: 'House' },
+              'House'
+            ),
+            _react2.default.createElement(
+              'option',
+              { value: 'Apartment' },
+              'Apartment'
+            ),
+            _react2.default.createElement(
+              'option',
+              { value: 'Studio' },
+              'Studio'
+            ),
+            _react2.default.createElement(
+              'option',
+              { value: 'Room' },
+              'Room'
             )
           ),
           _react2.default.createElement(
             'select',
-            { name: 'bedrooms', className: 'bedrooms' },
+            { name: 'bedrooms', className: 'bedrooms', onChange: this.props.change },
             _react2.default.createElement(
               'option',
               null,
-              'bedrooms'
+              'Bedrooms'
+            ),
+            _react2.default.createElement(
+              'option',
+              { value: '1' },
+              '1 BR'
+            ),
+            _react2.default.createElement(
+              'option',
+              { value: '2' },
+              '2 BR'
+            ),
+            _react2.default.createElement(
+              'option',
+              { value: '3' },
+              '3 BR'
+            ),
+            _react2.default.createElement(
+              'option',
+              { value: '4' },
+              '4 BR'
+            ),
+            _react2.default.createElement(
+              'option',
+              { value: '5' },
+              '5 BR'
+            ),
+            _react2.default.createElement(
+              'option',
+              { value: '6' },
+              '6 BR'
             )
           ),
           _react2.default.createElement(
             'select',
-            { name: 'bathrooms', className: 'bathrooms' },
+            { name: 'restrooms', className: 'bathrooms', onChange: this.props.change },
             _react2.default.createElement(
               'option',
               null,
               'bathrooms'
+            ),
+            _react2.default.createElement(
+              'option',
+              { value: '1' },
+              '1 RR'
+            ),
+            _react2.default.createElement(
+              'option',
+              { value: '2' },
+              '2 RR'
+            ),
+            _react2.default.createElement(
+              'option',
+              { value: '3' },
+              '3 RR'
+            ),
+            _react2.default.createElement(
+              'option',
+              { value: '4' },
+              '4 RR'
+            ),
+            _react2.default.createElement(
+              'option',
+              { value: '5' },
+              '5 RR'
+            ),
+            _react2.default.createElement(
+              'option',
+              { value: '6' },
+              '6 RR'
             )
           ),
           _react2.default.createElement(
@@ -284,8 +418,8 @@ var Filter = function (_Component) {
               { className: 'title' },
               'Price'
             ),
-            _react2.default.createElement('input', { type: 'text', name: 'min-price', className: 'min-price', placeholder: 'min' }),
-            _react2.default.createElement('input', { type: 'text', name: 'max-price', className: 'max-price', placeholder: 'max' })
+            _react2.default.createElement('input', { type: 'text', name: 'min-price', className: 'min-price', placeholder: 'min', onChange: this.props.change, value: '0' }),
+            _react2.default.createElement('input', { type: 'text', name: 'max-price', className: 'max-price', placeholder: 'max', onChange: this.props.change, value: '10000000' })
           ),
           _react2.default.createElement(
             'div',
@@ -295,8 +429,8 @@ var Filter = function (_Component) {
               { className: 'title' },
               'Floor Space'
             ),
-            _react2.default.createElement('input', { type: 'text', name: 'min-floor-space', className: 'min-floor-space', placeholder: 'min' }),
-            _react2.default.createElement('input', { type: 'text', name: 'max-floor-space', className: 'max-floor-space', placeholder: 'max' })
+            _react2.default.createElement('input', { type: 'text', name: 'min-floor-space', className: 'min-floor-space', placeholder: 'min', onChange: this.props.change, value: '0' }),
+            _react2.default.createElement('input', { type: 'text', name: 'max-floor-space', className: 'max-floor-space', placeholder: 'max', onChange: this.props.change, value: '50000' })
           ),
           _react2.default.createElement(
             'div',
@@ -308,53 +442,53 @@ var Filter = function (_Component) {
             ),
             _react2.default.createElement(
               'label',
-              { 'for': 'extras' },
+              { htmlFor: 'extras' },
               _react2.default.createElement(
                 'span',
                 null,
                 'Swimming Pool'
               ),
-              _react2.default.createElement('input', { name: 'extras', value: 'swimming-pool', type: 'checkbox' })
+              _react2.default.createElement('input', { name: 'extras', value: 'swimming-pool', type: 'checkbox', onChange: this.props.change })
             ),
             _react2.default.createElement(
               'label',
-              { 'for': 'extras' },
+              { htmlFor: 'extras' },
               _react2.default.createElement(
                 'span',
                 null,
                 'Elevators'
               ),
-              _react2.default.createElement('input', { name: 'extras', value: 'elevator', type: 'checkbox' })
+              _react2.default.createElement('input', { name: 'extras', value: 'elevator', type: 'checkbox', onChange: this.props.change })
             ),
             _react2.default.createElement(
               'label',
-              { 'for': 'extras' },
+              { htmlFor: 'extras' },
               _react2.default.createElement(
                 'span',
                 null,
                 'Garage'
               ),
-              _react2.default.createElement('input', { name: 'extras', value: 'gym', type: 'checkbox' })
+              _react2.default.createElement('input', { name: 'extras', value: 'gym', type: 'checkbox', onChange: this.props.change })
             ),
             _react2.default.createElement(
               'label',
-              { 'for': 'extras' },
+              { htmlFor: 'extras' },
               _react2.default.createElement(
                 'span',
                 null,
                 'Finished Basement'
               ),
-              _react2.default.createElement('input', { name: 'extras', value: 'finished basement', type: 'checkbox' })
+              _react2.default.createElement('input', { name: 'extras', value: 'finished basement', type: 'checkbox', onChange: this.props.change })
             ),
             _react2.default.createElement(
               'label',
-              { 'for': 'extras' },
+              { htmlFor: 'extras' },
               _react2.default.createElement(
                 'span',
                 null,
                 'Gym'
               ),
-              _react2.default.createElement('input', { name: 'extras', value: 'gym', type: 'checkbox' })
+              _react2.default.createElement('input', { name: 'extras', value: 'gym', type: 'checkbox', onChange: this.props.change })
             )
           )
         )
@@ -560,7 +694,8 @@ var Header = function (_Component) {
                     _react2.default.createElement(
                       'span',
                       null,
-                      '1000ft\xB2'
+                      listing.floorSpace,
+                      'ft\xB2'
                     ),
                     _react2.default.createElement(
                       'div',

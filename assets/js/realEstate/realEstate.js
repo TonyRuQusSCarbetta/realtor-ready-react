@@ -11,15 +11,27 @@ class App extends Component {
     this.state = {
       firstName: 'Tony',
       listingsData
-
     }
+
+    this.change = this.change.bind(this)
   }
+
+  change(event){
+    var name = event.target.name
+    var value = (event.target.type === 'checkbox') ? event.target.checked : event.target.value
+
+    this.setState({
+      [name]: value
+    }, () => {
+      console.log(this.state);
+    })
+  }
+
   render () {
-    console.log(this.state.listingsData);
     return (<div>
       <Header />
       <section id="content-area">
-        <Filter />
+        <Filter change={this.change} />
         <Listings listingsData={this.state.listingsData} />
       </section>
       </div>)
