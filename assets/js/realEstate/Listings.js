@@ -9,10 +9,13 @@ export default class Header extends Component {
     this.loopListings = this.loopListings.bind(this)
   }
   loopListings () {
-
-
     // var data = this.props.lisitngsData
     var {listingsData} = this.props
+
+    if (listingsData == undefined || listingsData.length == 0 ) {
+      return "Sorry your filter did not match any listing";
+    }
+
     return listingsData.map((listing, index) =>{
       return (<div className="listing" key={index}>
         <div className="listing-img" style={{background: `url("${listing.image}") no-repeat center center`}} >

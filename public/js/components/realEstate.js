@@ -13,8 +13,8 @@ var listingsData = [{
   address: '77 Hollywood Blvd',
   city: 'Los Angeles',
   state: 'CA',
-  bedrooms: '3',
-  price: '2499000',
+  bedrooms: 3,
+  price: 2499000,
   floorSpace: 6000,
   extras: ['garage', 'elevator', 'gym'],
   homeType: 'Apartment',
@@ -23,8 +23,8 @@ var listingsData = [{
   address: '17 Post Ave',
   city: 'New York City',
   state: 'NY',
-  bedrooms: '2',
-  price: '1499000',
+  bedrooms: 2,
+  price: 1499000,
   floorSpace: 3900,
   extras: ['elevator', 'garage'],
   homeType: 'Apartment',
@@ -35,8 +35,8 @@ var listingsData = [{
   address: '306 Cutler Dr',
   city: 'Miami',
   state: 'FL',
-  bedrooms: '5',
-  price: '949000',
+  bedrooms: 5,
+  price: 949000,
   floorSpace: 11000,
   extras: ['finished basement', 'gym', 'garage', 'pool'],
   homeType: 'Apartment',
@@ -45,8 +45,8 @@ var listingsData = [{
   address: '42 Union Square',
   city: 'San Francisco',
   state: 'CA',
-  bedrooms: '4',
-  price: '2999000',
+  bedrooms: 4,
+  price: 2999000,
   floorSpace: 8000,
   extras: ['elevator', 'gym'],
   homeType: 'Apartment',
@@ -57,8 +57,8 @@ var listingsData = [{
   address: '30 Colfax Ave',
   city: 'Denver',
   state: 'CO',
-  bedrooms: '3',
-  price: '649000',
+  bedrooms: 3,
+  price: 649000,
   floorSpace: 9000,
   extras: ['garage', 'finished basement', 'gym'],
   homeType: 'Apartment',
@@ -67,8 +67,8 @@ var listingsData = [{
   address: '7 Star Blvd',
   city: 'Houston',
   state: 'TX',
-  bedrooms: '4',
-  price: '499000',
+  bedrooms: 4,
+  price: 499000,
   floorSpace: 10000,
   extras: ['garage', 'finished basement', 'gym'],
   homeType: 'Apartment',
@@ -78,8 +78,8 @@ var listingsData = [{
   address: '29 Sullivan Ave',
   city: 'Daly City',
   state: 'CA',
-  bedrooms: '4',
-  price: '799000',
+  bedrooms: 4,
+  price: 799000,
   floorSpace: 12000,
   extras: ['garage', 'finished basement', 'gym'],
   homeType: 'Apartment',
@@ -89,8 +89,8 @@ var listingsData = [{
   address: '4659 Bridgeway Point',
   city: 'Atlanta',
   state: 'GA',
-  bedrooms: '6',
-  price: '749000',
+  bedrooms: 6,
+  price: 749000,
   floorSpace: 17000,
   extras: ['garage', 'finished basement', 'gym'],
   homeType: 'Apartment',
@@ -155,18 +155,23 @@ var App = function (_Component) {
     _this.state = {
       firstName: 'Tony',
       listingsData: _listingsData2.default,
+      neighborhood: 'San Francisco',
+      homeType: 'apartment',
+      bedrooms: 1,
       min_price: 0,
-      max_price: 10000000,
+      max_price: 9999999,
       min_floor_space: 0,
       max_floor_space: 50000,
       elevator: false,
       finished_basement: false,
       garage: false,
       gym: false,
-      swimming_pool: false
+      swimming_pool: false,
+      filteredData: _listingsData2.default
     };
 
     _this.change = _this.change.bind(_this);
+    _this.filteredData = _this.filteredData.bind(_this);
     return _this;
   }
 
@@ -180,6 +185,23 @@ var App = function (_Component) {
 
       this.setState(_defineProperty({}, name, value), function () {
         console.log(_this2.state);
+        // anytime the state is changed, trigger filteredData function
+        _this2.filteredData();
+      });
+    }
+
+    // checks if user's min_price/floorSpace & max_price/floorSpace matches each listing or not & return/display the results
+
+  }, {
+    key: 'filteredData',
+    value: function filteredData() {
+      var _this3 = this;
+
+      var newData = this.state.listingsData.filter(function (item) {
+        return item.price >= _this3.state.min_price && item.price <= _this3.state.max_price && item.floorSpace >= _this3.state.min_floor_space && item.floorSpace <= _this3.state.max_floor_space;
+      });
+      this.setState({
+        filteredData: newData
       });
     }
   }, {
@@ -193,7 +215,7 @@ var App = function (_Component) {
           'section',
           { id: 'content-area' },
           _react2.default.createElement(_Filter2.default, { change: this.change, globalState: this.state }),
-          _react2.default.createElement(_Listings2.default, { listingsData: this.state.listingsData })
+          _react2.default.createElement(_Listings2.default, { listingsData: this.state.filteredData })
         )
       );
     }
@@ -648,9 +670,13 @@ var Header = function (_Component) {
   _createClass(Header, [{
     key: 'loopListings',
     value: function loopListings() {
-
       // var data = this.props.lisitngsData
       var listingsData = this.props.listingsData;
+
+
+      if (listingsData == undefined || listingsData.length == 0) {
+        return "Sorry your filter did not match any listing";
+      }
 
       return listingsData.map(function (listing, index) {
         return _react2.default.createElement(
