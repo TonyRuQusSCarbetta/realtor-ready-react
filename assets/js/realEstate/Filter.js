@@ -58,8 +58,8 @@ export default class Filter extends Component {
 
         <div className="filters floor-space">
           <span className="title">Floor Space</span>
-          <input type="text" name="min_floor_space" className="min-floor-space" placeholder="min" onChange={this.props.change} value={this.props.globalState.min_floor_space} />
-          <input type="text" name="max_floor_space" className="max-floor-space" placeholder="max" onChange={this.props.change} value={this.props.globalState.max_floor_space} />
+          <input type="text" name="min_floor_space" className="min-floor-space" onChange={this.props.change} value={this.props.globalState.min_floor_space} />
+          <input type="text" name="max_floor_space" className="max-floor-space" onChange={this.props.change} value={this.props.globalState.max_floor_space} />
         </div>
 
         <div className="filters extras">

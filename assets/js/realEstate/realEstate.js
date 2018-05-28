@@ -14,7 +14,7 @@ class App extends Component {
       min_price: 0,
       max_price: 10000000,
       min_floor_space: 0,
-      min_floor_space: 50000,
+      max_floor_space: 50000,
       elevator: false,
       finished_basement: false,
       garage: false,

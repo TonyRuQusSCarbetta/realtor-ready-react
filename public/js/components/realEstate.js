@@ -148,19 +148,23 @@ var App = function (_Component) {
   _inherits(App, _Component);
 
   function App() {
-    var _this$state;
-
     _classCallCheck(this, App);
 
     var _this = _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).call(this));
 
-    _this.state = (_this$state = {
+    _this.state = {
       firstName: 'Tony',
       listingsData: _listingsData2.default,
       min_price: 0,
       max_price: 10000000,
-      min_floor_space: 0
-    }, _defineProperty(_this$state, 'min_floor_space', 50000), _defineProperty(_this$state, 'elevator', false), _defineProperty(_this$state, 'finished_basement', false), _defineProperty(_this$state, 'garage', false), _defineProperty(_this$state, 'gym', false), _defineProperty(_this$state, 'swimming_pool', false), _this$state);
+      min_floor_space: 0,
+      max_floor_space: 50000,
+      elevator: false,
+      finished_basement: false,
+      garage: false,
+      gym: false,
+      swimming_pool: false
+    };
 
     _this.change = _this.change.bind(_this);
     return _this;
@@ -434,8 +438,8 @@ var Filter = function (_Component) {
               { className: 'title' },
               'Floor Space'
             ),
-            _react2.default.createElement('input', { type: 'text', name: 'min_floor_space', className: 'min-floor-space', placeholder: 'min', onChange: this.props.change, value: this.props.globalState.min_floor_space }),
-            _react2.default.createElement('input', { type: 'text', name: 'max_floor_space', className: 'max-floor-space', placeholder: 'max', onChange: this.props.change, value: this.props.globalState.max_floor_space })
+            _react2.default.createElement('input', { type: 'text', name: 'min_floor_space', className: 'min-floor-space', onChange: this.props.change, value: this.props.globalState.min_floor_space }),
+            _react2.default.createElement('input', { type: 'text', name: 'max_floor_space', className: 'max-floor-space', onChange: this.props.change, value: this.props.globalState.max_floor_space })
           ),
           _react2.default.createElement(
             'div',
