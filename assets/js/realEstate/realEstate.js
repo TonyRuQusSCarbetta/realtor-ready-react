@@ -11,9 +11,9 @@ class App extends Component {
     this.state = {
       firstName: 'Tony',
       listingsData,
-      neighborhood: 'San Francisco',
-      homeType: 'apartment',
-      bedrooms: 1,
+      city: 'All',
+      homeType: 'All',
+      bedrooms: 0,
       min_price: 0,
       max_price: 9999999,
       min_floor_space: 0,
@@ -43,14 +43,32 @@ class App extends Component {
     })
   }
 
-  // checks if user's min_price/floorSpace & max_price/floorSpace matches each listing or not & return/display the results
+  // checks listingsData first than the current state selected by the user, to filter/return the results of the listings
+  //item parameter represents each individual listing being passed through the filter method
   filteredData(){
     var newData = this.state.listingsData.filter((item) => {
       return item.price >= this.state.min_price
       && item.price <= this.state.max_price
       && item.floorSpace >= this.state.min_floor_space
       && item.floorSpace <= this.state.max_floor_space
+      && item.bedrooms >= this.state.bedrooms
     })
+
+//Since the lisitngsData value is NOT a number we can't use >= ... So have to check if the current state set by the user is not the default word "All"... than filter/return the results of the item/listing based on the user's selected value. 
+    if (this.state.city != "All") {
+      newData = newData.filter((item) => {
+        return item.city == this.state.city
+      })
+    }
+
+    if (this.state.homeType != "All") {
+      newData = newData.filter((item) => {
+        return item.homeType == this.state.homeType
+      })
+    }
+
+
+
     this.setState({
       filteredData: newData
     })

@@ -12,8 +12,9 @@ export default class Filter extends Component {
     return (<section id="filter">
       <div className="inside">
         <h4>Filter</h4>
-        <select name="neighborhood" className="neighborhood" onChange={this.props.change}>
-          <option>Location</option>
+        <label htmlFor="city">City</label>
+        <select name="city" className="filters city" onChange={this.props.change}>
+          <option value="All">All</option>
           <option value="San Francisco">San Francisco</option>
           <option value="Miami">Miami</option>
           <option value="New York City">New York City</option>
@@ -23,31 +24,36 @@ export default class Filter extends Component {
           <option value="Daly City">Daly City</option>
           <option value="Houston">Houston</option>
         </select>
-        <select name="housetype" className="housetype" onChange={this.props.change}>
-          <option>Home Type</option>
+        <label htmlFor="homeType">Home Type</label>
+        <select name="homeType" className="filters homeType" onChange={this.props.change}>
+          <option value="All">All Homes</option>
           <option value="House">House</option>
+          <option value="Condo">Condo</option>
           <option value="Apartment">Apartment</option>
           <option value="Studio">Studio</option>
           <option value="Room">Room</option>
+          <option value="Ranch">Ranch</option>
         </select>
-        <select name="bedrooms" className="bedrooms" onChange={this.props.change}>
-          <option>Bedrooms</option>
-          <option value="1">1 BR</option>
-          <option value="2">2 BR</option>
-          <option value="3">3 BR</option>
-          <option value="4">4 BR</option>
-          <option value="5">5 BR</option>
-          <option value="6">6 BR</option>
-
+        <label htmlFor="bedrooms">Bedrooms</label>
+        <select name="bedrooms" className="filters bedrooms" onChange={this.props.change}>
+          <option value="0">0+ BR</option>
+          <option value="1">1+ BR</option>
+          <option value="2">2+ BR</option>
+          <option value="3">3+ BR</option>
+          <option value="4">4+ BR</option>
+          <option value="5">5+ BR</option>
+          <option value="6">6+ BR</option>
         </select>
-        <select name="bathrooms" className="bathrooms" onChange={this.props.change}>
+        <label htmlFor="Restrooms">Restrooms</label>
+        <select name="restrooms" className="filters restrooms" onChange={this.props.change}>
           <option>Restrooms</option>
-          <option value="1">1 RR</option>
-          <option value="2">2 RR</option>
-          <option value="3">3 RR</option>
-          <option value="4">4 RR</option>
-          <option value="5">5 RR</option>
-          <option value="6">6 RR</option>
+          <option value="0">0+ RR</option>
+          <option value="1">1+ RR</option>
+          <option value="2">2+ RR</option>
+          <option value="3">3+ RR</option>
+          <option value="4">4+ RR</option>
+          <option value="5">5+ RR</option>
+          <option value="6">6+ RR</option>
         </select>
 
         <div className="filters price">

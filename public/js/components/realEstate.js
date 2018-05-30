@@ -14,6 +14,7 @@ var listingsData = [{
   city: 'Los Angeles',
   state: 'CA',
   bedrooms: 3,
+  restrooms: 2,
   price: 2499000,
   floorSpace: 6000,
   extras: ['garage', 'elevator', 'gym'],
@@ -24,6 +25,7 @@ var listingsData = [{
   city: 'New York City',
   state: 'NY',
   bedrooms: 2,
+  restrooms: 2,
   price: 1499000,
   floorSpace: 3900,
   extras: ['elevator', 'garage'],
@@ -36,20 +38,22 @@ var listingsData = [{
   city: 'Miami',
   state: 'FL',
   bedrooms: 5,
+  restrooms: 3,
   price: 949000,
   floorSpace: 11000,
   extras: ['finished basement', 'gym', 'garage', 'pool'],
-  homeType: 'Apartment',
+  homeType: 'Condo',
   image: 'https://static1.squarespace.com/static/5759b85c37013bac29d4d37b/t/588fdd3b5016e1497f5fc81a/1485823293041/windsor.jpg?format=1500w'
 }, {
   address: '42 Union Square',
   city: 'San Francisco',
   state: 'CA',
   bedrooms: 4,
+  restrooms: 2,
   price: 2999000,
   floorSpace: 8000,
   extras: ['elevator', 'gym'],
-  homeType: 'Apartment',
+  homeType: 'Studio',
   image: 'http://www.allconceptcreation.fr/wp-content/uploads/2015/11/1201-laurel-way33.jpg'
   //'https://www.dha.gov.au/images/default-source/default-album/liv-apartments---artist-rendor_870x340.jpg?sfvrsn=22c96b2b_0'
   // 'https://www.amli.com/AMLIContent/Files/apartments/denver/ridgegate/amenity-exterior/ridgegate-amenity-exterior-pool2.jpg'
@@ -58,6 +62,7 @@ var listingsData = [{
   city: 'Denver',
   state: 'CO',
   bedrooms: 3,
+  restrooms: 3,
   price: 649000,
   floorSpace: 9000,
   extras: ['garage', 'finished basement', 'gym'],
@@ -68,10 +73,11 @@ var listingsData = [{
   city: 'Houston',
   state: 'TX',
   bedrooms: 4,
+  restrooms: 4,
   price: 499000,
   floorSpace: 10000,
   extras: ['garage', 'finished basement', 'gym'],
-  homeType: 'Apartment',
+  homeType: 'Ranch',
   image: 'https://www.ansthailandrealestate.com/uploads/9/2/2/0/922085/17-copy-copy-770x386_1_orig.jpg'
   //'http://www.allconceptcreation.fr/wp-content/uploads/2015/11/1201-laurel-way33.jpg'
 }, {
@@ -79,10 +85,11 @@ var listingsData = [{
   city: 'Daly City',
   state: 'CA',
   bedrooms: 4,
+  restrooms: 3,
   price: 799000,
   floorSpace: 12000,
   extras: ['garage', 'finished basement', 'gym'],
-  homeType: 'Apartment',
+  homeType: 'House',
   image: 'http://media.pinterest.com.s3.amazonaws.com/750x/f2/e1/8c/f2e18c3d9f3f5280fde81135c2c3c31e.jpg'
   //'https://bt-wpstatic.freetls.fastly.net/wp-content/blogs.dir/1238/files/2017/09/Jelmberg-Luxury-Estates-1024x402.jpg'
 }, {
@@ -90,10 +97,11 @@ var listingsData = [{
   city: 'Atlanta',
   state: 'GA',
   bedrooms: 6,
+  restrooms: 5,
   price: 749000,
   floorSpace: 17000,
   extras: ['garage', 'finished basement', 'gym'],
-  homeType: 'Apartment',
+  homeType: 'House',
   image: 'http://danielsteamhomes.com/agent_files/Luxury%20home.jpg'
 }];
 
@@ -155,9 +163,9 @@ var App = function (_Component) {
     _this.state = {
       firstName: 'Tony',
       listingsData: _listingsData2.default,
-      neighborhood: 'San Francisco',
-      homeType: 'apartment',
-      bedrooms: 1,
+      city: 'All',
+      homeType: 'All',
+      bedrooms: 0,
       min_price: 0,
       max_price: 9999999,
       min_floor_space: 0,
@@ -190,7 +198,8 @@ var App = function (_Component) {
       });
     }
 
-    // checks if user's min_price/floorSpace & max_price/floorSpace matches each listing or not & return/display the results
+    // checks listingsData first than the current state selected by the user, to filter/return the results of the listings
+    //item parameter represents each individual listing being passed through the filter method
 
   }, {
     key: 'filteredData',
@@ -198,8 +207,22 @@ var App = function (_Component) {
       var _this3 = this;
 
       var newData = this.state.listingsData.filter(function (item) {
-        return item.price >= _this3.state.min_price && item.price <= _this3.state.max_price && item.floorSpace >= _this3.state.min_floor_space && item.floorSpace <= _this3.state.max_floor_space;
+        return item.price >= _this3.state.min_price && item.price <= _this3.state.max_price && item.floorSpace >= _this3.state.min_floor_space && item.floorSpace <= _this3.state.max_floor_space && item.bedrooms >= _this3.state.bedrooms;
       });
+
+      //Since the lisitngsData value is NOT a number we can't use >= ... So have to check if the current state set by the user is not the default word "All"... than filter/return the results of the item/listing based on the user's selected value. 
+      if (this.state.city != "All") {
+        newData = newData.filter(function (item) {
+          return item.city == _this3.state.city;
+        });
+      }
+
+      if (this.state.homeType != "All") {
+        newData = newData.filter(function (item) {
+          return item.homeType == _this3.state.homeType;
+        });
+      }
+
       this.setState({
         filteredData: newData
       });
@@ -286,12 +309,17 @@ var Filter = function (_Component) {
             'Filter'
           ),
           _react2.default.createElement(
+            'label',
+            { htmlFor: 'city' },
+            'City'
+          ),
+          _react2.default.createElement(
             'select',
-            { name: 'neighborhood', className: 'neighborhood', onChange: this.props.change },
+            { name: 'city', className: 'filters city', onChange: this.props.change },
             _react2.default.createElement(
               'option',
-              null,
-              'Location'
+              { value: 'All' },
+              'All'
             ),
             _react2.default.createElement(
               'option',
@@ -335,17 +363,27 @@ var Filter = function (_Component) {
             )
           ),
           _react2.default.createElement(
+            'label',
+            { htmlFor: 'homeType' },
+            'Home Type'
+          ),
+          _react2.default.createElement(
             'select',
-            { name: 'housetype', className: 'housetype', onChange: this.props.change },
+            { name: 'homeType', className: 'filters homeType', onChange: this.props.change },
             _react2.default.createElement(
               'option',
-              null,
-              'Home Type'
+              { value: 'All' },
+              'All Homes'
             ),
             _react2.default.createElement(
               'option',
               { value: 'House' },
               'House'
+            ),
+            _react2.default.createElement(
+              'option',
+              { value: 'Condo' },
+              'Condo'
             ),
             _react2.default.createElement(
               'option',
@@ -361,50 +399,65 @@ var Filter = function (_Component) {
               'option',
               { value: 'Room' },
               'Room'
+            ),
+            _react2.default.createElement(
+              'option',
+              { value: 'Ranch' },
+              'Ranch'
             )
           ),
           _react2.default.createElement(
+            'label',
+            { htmlFor: 'bedrooms' },
+            'Bedrooms'
+          ),
+          _react2.default.createElement(
             'select',
-            { name: 'bedrooms', className: 'bedrooms', onChange: this.props.change },
+            { name: 'bedrooms', className: 'filters bedrooms', onChange: this.props.change },
             _react2.default.createElement(
               'option',
-              null,
-              'Bedrooms'
+              { value: '0' },
+              '0+ BR'
             ),
             _react2.default.createElement(
               'option',
               { value: '1' },
-              '1 BR'
+              '1+ BR'
             ),
             _react2.default.createElement(
               'option',
               { value: '2' },
-              '2 BR'
+              '2+ BR'
             ),
             _react2.default.createElement(
               'option',
               { value: '3' },
-              '3 BR'
+              '3+ BR'
             ),
             _react2.default.createElement(
               'option',
               { value: '4' },
-              '4 BR'
+              '4+ BR'
             ),
             _react2.default.createElement(
               'option',
               { value: '5' },
-              '5 BR'
+              '5+ BR'
             ),
             _react2.default.createElement(
               'option',
               { value: '6' },
-              '6 BR'
+              '6+ BR'
             )
           ),
           _react2.default.createElement(
+            'label',
+            { htmlFor: 'Restrooms' },
+            'Restrooms'
+          ),
+          _react2.default.createElement(
             'select',
-            { name: 'bathrooms', className: 'bathrooms', onChange: this.props.change },
+            { name: 'restrooms', className: 'filters restrooms', onChange: this.props.change },
             _react2.default.createElement(
               'option',
               null,
@@ -412,33 +465,38 @@ var Filter = function (_Component) {
             ),
             _react2.default.createElement(
               'option',
+              { value: '0' },
+              '0+ RR'
+            ),
+            _react2.default.createElement(
+              'option',
               { value: '1' },
-              '1 RR'
+              '1+ RR'
             ),
             _react2.default.createElement(
               'option',
               { value: '2' },
-              '2 RR'
+              '2+ RR'
             ),
             _react2.default.createElement(
               'option',
               { value: '3' },
-              '3 RR'
+              '3+ RR'
             ),
             _react2.default.createElement(
               'option',
               { value: '4' },
-              '4 RR'
+              '4+ RR'
             ),
             _react2.default.createElement(
               'option',
               { value: '5' },
-              '5 RR'
+              '5+ RR'
             ),
             _react2.default.createElement(
               'option',
               { value: '6' },
-              '6 RR'
+              '6+ RR'
             )
           ),
           _react2.default.createElement(
@@ -764,7 +822,7 @@ var Header = function (_Component) {
             ),
             _react2.default.createElement(
               'span',
-              { className: 'location' },
+              { className: 'city' },
               _react2.default.createElement('i', { className: 'fas fa-map-marker-alt' }),
               listing.city,
               ', ',

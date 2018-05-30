@@ -4,6 +4,7 @@ var listingsData = [
     city: 'Los Angeles',
     state: 'CA',
     bedrooms: 3,
+    restrooms: 2,
     price: 2499000,
     floorSpace: 6000,
     extras: [
@@ -21,6 +22,7 @@ var listingsData = [
     city: 'New York City',
     state: 'NY',
     bedrooms: 2,
+    restrooms: 2,
     price: 1499000,
     floorSpace: 3900,
     extras: [
@@ -39,6 +41,7 @@ var listingsData = [
     city: 'Miami',
     state: 'FL',
     bedrooms: 5,
+    restrooms: 3,
     price: 949000,
     floorSpace: 11000,
     extras: [
@@ -48,7 +51,7 @@ var listingsData = [
       'pool',
 
     ],
-    homeType: 'Apartment',
+    homeType: 'Condo',
     image: 'https://static1.squarespace.com/static/5759b85c37013bac29d4d37b/t/588fdd3b5016e1497f5fc81a/1485823293041/windsor.jpg?format=1500w'
   },
 
@@ -57,13 +60,14 @@ var listingsData = [
     city: 'San Francisco',
     state: 'CA',
     bedrooms: 4,
+    restrooms: 2,
     price: 2999000,
     floorSpace: 8000,
     extras: [
       'elevator',
       'gym'
     ],
-    homeType: 'Apartment',
+    homeType: 'Studio',
     image:
     'http://www.allconceptcreation.fr/wp-content/uploads/2015/11/1201-laurel-way33.jpg'
     //'https://www.dha.gov.au/images/default-source/default-album/liv-apartments---artist-rendor_870x340.jpg?sfvrsn=22c96b2b_0'
@@ -75,6 +79,7 @@ var listingsData = [
     city: 'Denver',
     state: 'CO',
     bedrooms: 3,
+    restrooms: 3,
     price: 649000,
     floorSpace: 9000,
     extras: [
@@ -91,6 +96,7 @@ var listingsData = [
     city: 'Houston',
     state: 'TX',
     bedrooms: 4,
+    restrooms: 4,
     price: 499000,
     floorSpace: 10000,
     extras: [
@@ -98,7 +104,7 @@ var listingsData = [
       'finished basement',
       'gym'
     ],
-    homeType: 'Apartment',
+    homeType: 'Ranch',
     image: 'https://www.ansthailandrealestate.com/uploads/9/2/2/0/922085/17-copy-copy-770x386_1_orig.jpg'
     //'http://www.allconceptcreation.fr/wp-content/uploads/2015/11/1201-laurel-way33.jpg'
   },
@@ -108,6 +114,7 @@ var listingsData = [
     city: 'Daly City',
     state: 'CA',
     bedrooms: 4,
+    restrooms: 3,
     price: 799000,
     floorSpace: 12000,
     extras: [
@@ -115,7 +122,7 @@ var listingsData = [
       'finished basement',
       'gym'
     ],
-    homeType: 'Apartment',
+    homeType: 'House',
      image:
       'http://media.pinterest.com.s3.amazonaws.com/750x/f2/e1/8c/f2e18c3d9f3f5280fde81135c2c3c31e.jpg'
      //'https://bt-wpstatic.freetls.fastly.net/wp-content/blogs.dir/1238/files/2017/09/Jelmberg-Luxury-Estates-1024x402.jpg'
@@ -126,6 +133,7 @@ var listingsData = [
     city: 'Atlanta',
     state: 'GA',
     bedrooms: 6,
+    restrooms: 5,
     price: 749000,
     floorSpace: 17000,
     extras: [
@@ -133,7 +141,7 @@ var listingsData = [
       'finished basement',
       'gym'
     ],
-    homeType: 'Apartment',
+    homeType: 'House',
     image: 'http://danielsteamhomes.com/agent_files/Luxury%20home.jpg'
   },
 ]
