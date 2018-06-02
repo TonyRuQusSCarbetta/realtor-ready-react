@@ -81,13 +81,18 @@ class App extends Component {
     })
 
   }
-
+// <div className=""></div>
   render () {
     return (<div>
       <Header />
       <section id="content-area">
+        <div className="col-md-3">
         <Filter change={this.change} globalState={this.state} />
+        </div>
+
+        <div className="col-md-9">
         <Listings listingsData={this.state.filteredData} />
+        </div>
       </section>
       </div>)
   }

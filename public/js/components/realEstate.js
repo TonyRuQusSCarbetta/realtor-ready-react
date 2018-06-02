@@ -234,6 +234,8 @@ var App = function (_Component) {
         filteredData: newData
       });
     }
+    // <div className=""></div>
+
   }, {
     key: 'render',
     value: function render() {
@@ -244,8 +246,16 @@ var App = function (_Component) {
         _react2.default.createElement(
           'section',
           { id: 'content-area' },
-          _react2.default.createElement(_Filter2.default, { change: this.change, globalState: this.state }),
-          _react2.default.createElement(_Listings2.default, { listingsData: this.state.filteredData })
+          _react2.default.createElement(
+            'div',
+            { className: 'col-md-3' },
+            _react2.default.createElement(_Filter2.default, { change: this.change, globalState: this.state })
+          ),
+          _react2.default.createElement(
+            'div',
+            { className: 'col-md-9' },
+            _react2.default.createElement(_Listings2.default, { listingsData: this.state.filteredData })
+          )
         )
       );
     }
