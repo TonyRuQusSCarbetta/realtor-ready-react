@@ -1,7 +1,7 @@
 @import url( 'https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700');
 @import "variables";
 @import "reset";
-@import "grid/grid12;"
+@import "grid/grid12";
 
 // .flex-container {
 //   padding: 0;
@@ -12,7 +12,16 @@
 //   justify-content: center;
 // }
 
-*
+*,
+body,
+html {
+  font-family: 'Roboto', sans-serif;
+  box-sizing: border-box;
+  // background: purple;
+}
+
+
+*,
 body,
 html {
   font-family: 'Roboto', sans-serif;

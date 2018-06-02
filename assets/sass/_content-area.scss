@@ -1,15 +1,17 @@
 #content-area {
-  overflow: auto;
+  // overflow: auto;
   width: 100%;
   min-height: 100vh;
 }
 
 #filter {
   background: $grey;
-  width: 30%;
-  max-width: 300px;
+  // width: 30%;
+  // max-width: 300px;
   display: inline-block;
   float: left;
+  margin-top: 15px;
+border-radius: 1%;
 
   .inside {
     padding: 20px;
@@ -67,7 +69,6 @@
 }
 
 #listings {
-  width: 70%;
   float: left;
   display: inline-block;
   padding: 15px;
@@ -84,6 +85,11 @@
       font-weight: 100;
       color: $lightgrey;
     }
+  }
+
+  .fa-search{
+    color: $darkgrey;
+    font-size: 50px;
   }
 
   .sortby-area {
@@ -103,7 +109,7 @@
         font-weight: 300;
         border: 1px solid $lightgrey;
         background: transparent;
-        padding: 20px;
+        padding: 3px;
         display: inline-block;
         margin-right: 15px;
         vertical-align: top;
@@ -251,8 +257,8 @@
             top: 3px;
           }
           .floor-space {
-            margin-bottom: 0px;
-                margin-top: 25px;
+            margin-bottom: -10px;
+                margin-top: 20px;
           }
         }
 
@@ -325,18 +331,18 @@
   text-align: center;
 }
 
-.col-md-3{
-  width: 25%;
-  display: inline-block;
-  vertical-align: top;
-
-}
-
-.col-md-9{
-  width: 75%;
-  display: inline-block;
-}
-
-.col-md-12{
-  width: 100%;
-}
+// .col-md-3{
+//   width: 25%;
+//   display: inline-block;
+//   vertical-align: top;
+//
+// }
+//
+// .col-md-9{
+//   width: 75%;
+//   display: inline-block;
+// }
+//
+// .col-md-12{
+//   width: 100%;
+// }

@@ -848,40 +848,45 @@ var Header = function (_Component) {
         'section',
         { id: 'listings' },
         _react2.default.createElement(
-          'section',
-          { className: 'search-area' },
-          _react2.default.createElement('input', { type: 'text', name: 'search' })
-        ),
-        _react2.default.createElement(
-          'section',
-          { className: 'sortby-area' },
+          'div',
+          { className: 'row' },
           _react2.default.createElement(
-            'div',
-            { className: 'results' },
-            '390 results found'
+            'section',
+            { className: 'search-area' },
+            _react2.default.createElement('input', { type: 'text', name: 'search' }),
+            _react2.default.createElement('i', { 'class': 'fas fa-search' })
           ),
           _react2.default.createElement(
-            'div',
-            { className: 'sort-options' },
+            'section',
+            { className: 'sortby-area' },
             _react2.default.createElement(
-              'select',
-              { name: 'sortby', className: 'sortby' },
-              _react2.default.createElement(
-                'option',
-                { value: 'price-asc' },
-                'Highest Price'
-              ),
-              _react2.default.createElement(
-                'option',
-                { value: 'price-asc' },
-                'Lowest Price'
-              )
+              'div',
+              { className: 'results' },
+              '390 results found'
             ),
             _react2.default.createElement(
               'div',
-              { className: 'view' },
-              _react2.default.createElement('i', { className: 'fas fa-list' }),
-              _react2.default.createElement('i', { className: 'fas fa-th' })
+              { className: 'sort-options' },
+              _react2.default.createElement(
+                'select',
+                { name: 'sortby', className: 'sortby' },
+                _react2.default.createElement(
+                  'option',
+                  { value: 'price-asc' },
+                  'Highest Price'
+                ),
+                _react2.default.createElement(
+                  'option',
+                  { value: 'price-asc' },
+                  'Lowest Price'
+                )
+              ),
+              _react2.default.createElement(
+                'div',
+                { className: 'view' },
+                _react2.default.createElement('i', { className: 'fas fa-list' }),
+                _react2.default.createElement('i', { className: 'fas fa-th' })
+              )
             )
           )
         ),

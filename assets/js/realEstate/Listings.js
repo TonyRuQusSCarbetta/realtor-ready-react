@@ -58,10 +58,12 @@ export default class Header extends Component {
 
   render() {
     return (<section id="listings">
-
+      <div className="row">
       <section className="search-area">
         <input type="text" name="search"/>
+        <i class="fas fa-search"></i>
       </section>
+
 
       <section className="sortby-area">
         <div className="results">390 results found</div>
@@ -76,7 +78,7 @@ export default class Header extends Component {
           </div>
         </div>
       </section>
-
+      </div>
       <section className="listings-results">
 
       {this.loopListings()}
