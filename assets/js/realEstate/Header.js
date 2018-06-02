@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import ReactDOM from 'react-dom'
+// import ReactDOM from 'react-dom'
 // ------------------------------------------------------------------
 export default class Header extends Component {
   constructor () {
@@ -12,14 +12,15 @@ export default class Header extends Component {
   render () {
     return (
       <header>
-        <div className="logo"><em>Realtor Ready</em></div>
+        <div className="mx-left d-inline-block"><em>Realtor Ready</em>
 
-        <nav>
-          <a href="#">Create Ads</a>
-          <a href="#">About Us</a>
-          <a href="#">Log In</a>
-          <a href="#" className="register-btn">Register</a>
+        <nav className="d-inline-block">
+          <a className="d-inline-block" href="#">Create Ads</a>
+          <a className="d-inline-block" href="#">About Us</a>
+          <a className="d-inline-block" href="#">Log In</a>
+          <a className="d-inline-block" href="#">Register</a>
         </nav>
+        </div>
 
       </header>
     )

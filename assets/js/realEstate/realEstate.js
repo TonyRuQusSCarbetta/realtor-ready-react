@@ -52,9 +52,10 @@ class App extends Component {
       && item.floorSpace >= this.state.min_floor_space
       && item.floorSpace <= this.state.max_floor_space
       && item.bedrooms >= this.state.bedrooms
+
     })
 
-//Since the lisitngsData value is NOT a number we can't use >= ... So have to check if the current state set by the user is not the default word "All"... than filter/return the results of the item/listing based on the user's selected value. 
+//Since the lisitngsData value is NOT a number we can't use >= ... So have to check if the current state set by the user is not the default word "All"... than filter/return the results of the item/listing based on the user's selected value.
     if (this.state.city != "All") {
       newData = newData.filter((item) => {
         return item.city == this.state.city
@@ -68,6 +69,12 @@ class App extends Component {
     }
 
 
+//fliter the listings data that has swimming_pool
+    // if (this.state.swimming_pool = 'true') {
+    //   newData = newData.filter((item) => {
+    //     return item.swimming_pool == this.state.swimming_pool
+    //   })
+    // }
 
     this.setState({
       filteredData: newData

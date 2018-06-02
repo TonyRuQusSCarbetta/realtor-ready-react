@@ -46,7 +46,6 @@ export default class Filter extends Component {
         </select>
         <label htmlFor="Restrooms">Restrooms</label>
         <select name="restrooms" className="filters restrooms" onChange={this.props.change}>
-          <option>Restrooms</option>
           <option value="0">0+ RR</option>
           <option value="1">1+ RR</option>
           <option value="2">2+ RR</option>
@@ -75,7 +74,7 @@ export default class Filter extends Component {
 
           <label htmlFor="extras">
             <span>Swimming Pool</span>
-            <input name="swimming_pool" value="swimming_pool" type="checkbox"onChange={this.props.change}/>
+            <input id="swimming_pool" name="swimming_pool" value="swimming_pool" type="checkbox"onChange={this.props.change}/>
           </label>
 
           <label htmlFor="extras">

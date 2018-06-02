@@ -48,8 +48,7 @@ var listingsData = [
       'finished basement',
       'gym',
       'garage',
-      'pool',
-
+      'swimming_pool'
     ],
     homeType: 'Condo',
     image: 'https://static1.squarespace.com/static/5759b85c37013bac29d4d37b/t/588fdd3b5016e1497f5fc81a/1485823293041/windsor.jpg?format=1500w'
@@ -85,7 +84,8 @@ var listingsData = [
     extras: [
       'garage',
       'finished basement',
-      'gym'
+      'gym',
+      'swimming_pool'
     ],
     homeType: 'Apartment',
     image: 'https://cdnblog.rentcafe.com/blog/wp-content/uploads/2017/03/best-rated-apartments-phoenix-featured.jpg'

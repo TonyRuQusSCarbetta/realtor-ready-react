@@ -41,7 +41,7 @@ var listingsData = [{
   restrooms: 3,
   price: 949000,
   floorSpace: 11000,
-  extras: ['finished basement', 'gym', 'garage', 'pool'],
+  extras: ['finished basement', 'gym', 'garage', 'swimming_pool'],
   homeType: 'Condo',
   image: 'https://static1.squarespace.com/static/5759b85c37013bac29d4d37b/t/588fdd3b5016e1497f5fc81a/1485823293041/windsor.jpg?format=1500w'
 }, {
@@ -65,7 +65,7 @@ var listingsData = [{
   restrooms: 3,
   price: 649000,
   floorSpace: 9000,
-  extras: ['garage', 'finished basement', 'gym'],
+  extras: ['garage', 'finished basement', 'gym', 'swimming_pool'],
   homeType: 'Apartment',
   image: 'https://cdnblog.rentcafe.com/blog/wp-content/uploads/2017/03/best-rated-apartments-phoenix-featured.jpg'
 }, {
@@ -121,7 +121,7 @@ var _react = __webpack_require__(16);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactDom = __webpack_require__(25);
+var _reactDom = __webpack_require__(33);
 
 var _reactDom2 = _interopRequireDefault(_reactDom);
 
@@ -210,7 +210,7 @@ var App = function (_Component) {
         return item.price >= _this3.state.min_price && item.price <= _this3.state.max_price && item.floorSpace >= _this3.state.min_floor_space && item.floorSpace <= _this3.state.max_floor_space && item.bedrooms >= _this3.state.bedrooms;
       });
 
-      //Since the lisitngsData value is NOT a number we can't use >= ... So have to check if the current state set by the user is not the default word "All"... than filter/return the results of the item/listing based on the user's selected value. 
+      //Since the lisitngsData value is NOT a number we can't use >= ... So have to check if the current state set by the user is not the default word "All"... than filter/return the results of the item/listing based on the user's selected value.
       if (this.state.city != "All") {
         newData = newData.filter(function (item) {
           return item.city == _this3.state.city;
@@ -222,6 +222,13 @@ var App = function (_Component) {
           return item.homeType == _this3.state.homeType;
         });
       }
+
+      //fliter the listings data that has swimming_pool
+      // if (this.state.swimming_pool = 'true') {
+      //   newData = newData.filter((item) => {
+      //     return item.swimming_pool == this.state.swimming_pool
+      //   })
+      // }
 
       this.setState({
         filteredData: newData
@@ -460,11 +467,6 @@ var Filter = function (_Component) {
             { name: 'restrooms', className: 'filters restrooms', onChange: this.props.change },
             _react2.default.createElement(
               'option',
-              null,
-              'Restrooms'
-            ),
-            _react2.default.createElement(
-              'option',
               { value: '0' },
               '0+ RR'
             ),
@@ -537,7 +539,7 @@ var Filter = function (_Component) {
                 null,
                 'Swimming Pool'
               ),
-              _react2.default.createElement('input', { name: 'swimming_pool', value: 'swimming_pool', type: 'checkbox', onChange: this.props.change })
+              _react2.default.createElement('input', { id: 'swimming_pool', name: 'swimming_pool', value: 'swimming_pool', type: 'checkbox', onChange: this.props.change })
             ),
             _react2.default.createElement(
               'label',
@@ -608,10 +610,6 @@ var _react = __webpack_require__(16);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactDom = __webpack_require__(25);
-
-var _reactDom2 = _interopRequireDefault(_reactDom);
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -620,6 +618,7 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
+// import ReactDOM from 'react-dom'
 // ------------------------------------------------------------------
 var Header = function (_Component) {
   _inherits(Header, _Component);
@@ -643,35 +642,35 @@ var Header = function (_Component) {
         null,
         _react2.default.createElement(
           'div',
-          { className: 'logo' },
+          { className: 'mx-left d-inline-block' },
           _react2.default.createElement(
             'em',
             null,
             'Realtor Ready'
-          )
-        ),
-        _react2.default.createElement(
-          'nav',
-          null,
-          _react2.default.createElement(
-            'a',
-            { href: '#' },
-            'Create Ads'
           ),
           _react2.default.createElement(
-            'a',
-            { href: '#' },
-            'About Us'
-          ),
-          _react2.default.createElement(
-            'a',
-            { href: '#' },
-            'Log In'
-          ),
-          _react2.default.createElement(
-            'a',
-            { href: '#', className: 'register-btn' },
-            'Register'
+            'nav',
+            { className: 'd-inline-block' },
+            _react2.default.createElement(
+              'a',
+              { className: 'd-inline-block', href: '#' },
+              'Create Ads'
+            ),
+            _react2.default.createElement(
+              'a',
+              { className: 'd-inline-block', href: '#' },
+              'About Us'
+            ),
+            _react2.default.createElement(
+              'a',
+              { className: 'd-inline-block', href: '#' },
+              'Log In'
+            ),
+            _react2.default.createElement(
+              'a',
+              { className: 'd-inline-block', href: '#' },
+              'Register'
+            )
           )
         )
       );
