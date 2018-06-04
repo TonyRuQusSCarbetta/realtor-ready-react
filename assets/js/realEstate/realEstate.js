@@ -35,6 +35,7 @@ class App extends Component {
     var value = (event.target.type === 'checkbox') ? event.target.checked : event.target.value
 
     this.setState({
+      //using the variables above which target the name of the input fields that the user is changing, we send the name & the new value UP to the global state... for example if the select box is changed to San Francisco, the constructor would have a city: 'San Francisco'... city represents name & san francisco represents value! (the name & value were already created in the Filter Component )
       [name]: value
     }, () => {
       console.log(this.state);
