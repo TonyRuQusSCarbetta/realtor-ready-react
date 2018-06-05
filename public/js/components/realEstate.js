@@ -166,6 +166,7 @@ var App = function (_Component) {
       city: 'All',
       homeType: 'All',
       bedrooms: 0,
+      restrooms: 0,
       min_price: 0,
       max_price: 9999999,
       min_floor_space: 0,
