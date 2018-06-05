@@ -15,8 +15,8 @@ export default class Header extends Component {
         <div className="mx-left d-inline-block"><em>Realtor Ready</em>
 
         <nav className="d-inline-block">
-          <a className="d-inline-block" href="#">Create Ads</a>
-          <a className="d-inline-block" href="#">About Us</a>
+          <a className="d-inline-block hide" href="#">Create Ads</a>
+          <a className="d-inline-block hide" href="#">About Us</a>
           <a className="d-inline-block" href="#">Log In</a>
           <a className="d-inline-block" href="#">Register</a>
         </nav>

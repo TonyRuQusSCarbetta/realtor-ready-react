@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 // ------------------------------------------------------------------
-export default class Header extends Component {
+export default class Listings extends Component {
   constructor() {
     super()
     this.state = {
@@ -64,28 +64,10 @@ export default class Header extends Component {
 
 //in the render we called this.loopListings() function in a specific spot which displays each listing.
   render() {
-    return (<section id="listings">
+    return (
+      <section id="listings">
       <div className="row">
-      <section className="search-area">
-        <input type="text" name="search"/>
-        <i class="fas fa-search"></i>
-      </section>
 
-
-      <section className="sortby-area">
-        <div className="results">390 results found</div>
-        <div className="sort-options">
-          <select name="sortby" className="sortby">
-            <option value="price-asc">Highest Price</option>
-            <option value="price-asc">Lowest Price</option>
-          </select>
-          <div className="view">
-            <i className="fas fa-list"></i>
-            <i className="fas fa-th"></i>
-          </div>
-        </div>
-      </section>
-      </div>
 
 
       <section className="listings-results">
@@ -103,7 +85,10 @@ export default class Header extends Component {
           <li>5</li>
           <li>Next</li>
         </ul>
+
       </section>
-    </section>)
+      </div>
+      </section>
+    )
   }
 }

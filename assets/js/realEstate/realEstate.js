@@ -18,13 +18,13 @@ class App extends Component {
       min_price: 0,
       max_price: 9999999,
       min_floor_space: 0,
-      max_floor_space: 50000,
+      max_floor_space: 49999,
       elevator: false,
       finished_basement: false,
       garage: false,
       gym: false,
       swimming_pool: false,
-      filteredData: listingsData
+      filteredData: listingsData,
     }
 
     this.change = this.change.bind(this)
@@ -124,11 +124,11 @@ class App extends Component {
     return (<div>
       <Header />
       <section id="content-area">
-        <div className="col-md-3">
+        <div className="col-sm-3 mx- flex-container">
         <Filter change={this.change} globalState={this.state} />
         </div>
 
-        <div className="col-md-9">
+        <div className="col-sm-9 mx-auto flex-container">
         <Listings listingsData={this.state.filteredData} />
         </div>
       </section>

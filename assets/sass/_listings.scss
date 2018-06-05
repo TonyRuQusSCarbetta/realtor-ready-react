@@ -4,6 +4,16 @@ header {
   overflow: auto;
   padding: 20px 15px;
 
+em{
+  color: white;
+  border: solid 2px $pink;
+  padding: 7px;
+  &:hover{
+    color: white;
+    border: solid 2px $pink;
+    cursor: pointer;
+  }
+}
   .logo {
     float: left;
     color: $offwhite;
@@ -35,4 +45,10 @@ header {
       }
     }
   }
+}
+
+@media only screen and (max-width: 506px) {
+    .hide {
+        display: none;
+    }
 }

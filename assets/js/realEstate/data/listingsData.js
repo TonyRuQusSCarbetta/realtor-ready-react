@@ -102,7 +102,6 @@ var listingsData = [
     extras: [
       'garage',
       'finished basement',
-      'gym'
     ],
     homeType: 'Ranch',
     image: 'https://www.ansthailandrealestate.com/uploads/9/2/2/0/922085/17-copy-copy-770x386_1_orig.jpg'

@@ -76,7 +76,7 @@ var listingsData = [{
   restrooms: 4,
   price: 499000,
   floorSpace: 10000,
-  extras: ['garage', 'finished basement', 'gym'],
+  extras: ['garage', 'finished basement'],
   homeType: 'Ranch',
   image: 'https://www.ansthailandrealestate.com/uploads/9/2/2/0/922085/17-copy-copy-770x386_1_orig.jpg'
   //'http://www.allconceptcreation.fr/wp-content/uploads/2015/11/1201-laurel-way33.jpg'
@@ -170,7 +170,7 @@ var App = function (_Component) {
       min_price: 0,
       max_price: 9999999,
       min_floor_space: 0,
-      max_floor_space: 50000,
+      max_floor_space: 49999,
       elevator: false,
       finished_basement: false,
       garage: false,
@@ -283,12 +283,12 @@ var App = function (_Component) {
           { id: 'content-area' },
           _react2.default.createElement(
             'div',
-            { className: 'col-md-3' },
+            { className: 'col-sm-3 mx- flex-container' },
             _react2.default.createElement(_Filter2.default, { change: this.change, globalState: this.state })
           ),
           _react2.default.createElement(
             'div',
-            { className: 'col-md-9' },
+            { className: 'col-sm-9 mx-auto flex-container' },
             _react2.default.createElement(_Listings2.default, { listingsData: this.state.filteredData })
           )
         )
@@ -698,12 +698,12 @@ var Header = function (_Component) {
             { className: 'd-inline-block' },
             _react2.default.createElement(
               'a',
-              { className: 'd-inline-block', href: '#' },
+              { className: 'd-inline-block hide', href: '#' },
               'Create Ads'
             ),
             _react2.default.createElement(
               'a',
-              { className: 'd-inline-block', href: '#' },
+              { className: 'd-inline-block hide', href: '#' },
               'About Us'
             ),
             _react2.default.createElement(
@@ -754,13 +754,13 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 // ------------------------------------------------------------------
-var Header = function (_Component) {
-  _inherits(Header, _Component);
+var Listings = function (_Component) {
+  _inherits(Listings, _Component);
 
-  function Header() {
-    _classCallCheck(this, Header);
+  function Listings() {
+    _classCallCheck(this, Listings);
 
-    var _this = _possibleConstructorReturn(this, (Header.__proto__ || Object.getPrototypeOf(Header)).call(this));
+    var _this = _possibleConstructorReturn(this, (Listings.__proto__ || Object.getPrototypeOf(Listings)).call(this));
 
     _this.state = {
       firstName: 'Tony'
@@ -770,7 +770,7 @@ var Header = function (_Component) {
     return _this;
   }
 
-  _createClass(Header, [{
+  _createClass(Listings, [{
     key: 'loopListings',
     value: function loopListings() {
       // var data = this.props.lisitngsData is the same as the variable below
@@ -895,89 +895,50 @@ var Header = function (_Component) {
           { className: 'row' },
           _react2.default.createElement(
             'section',
-            { className: 'search-area' },
-            _react2.default.createElement('input', { type: 'text', name: 'search' }),
-            _react2.default.createElement('i', { 'class': 'fas fa-search' })
+            { className: 'listings-results' },
+            this.loopListings()
           ),
           _react2.default.createElement(
             'section',
-            { className: 'sortby-area' },
+            { id: 'pagination' },
             _react2.default.createElement(
-              'div',
-              { className: 'results' },
-              '390 results found'
-            ),
-            _react2.default.createElement(
-              'div',
-              { className: 'sort-options' },
+              'ul',
+              { className: 'pages' },
               _react2.default.createElement(
-                'select',
-                { name: 'sortby', className: 'sortby' },
-                _react2.default.createElement(
-                  'option',
-                  { value: 'price-asc' },
-                  'Highest Price'
-                ),
-                _react2.default.createElement(
-                  'option',
-                  { value: 'price-asc' },
-                  'Lowest Price'
-                )
+                'li',
+                null,
+                'Prev'
               ),
               _react2.default.createElement(
-                'div',
-                { className: 'view' },
-                _react2.default.createElement('i', { className: 'fas fa-list' }),
-                _react2.default.createElement('i', { className: 'fas fa-th' })
+                'li',
+                { className: 'active' },
+                '1'
+              ),
+              _react2.default.createElement(
+                'li',
+                null,
+                '2'
+              ),
+              _react2.default.createElement(
+                'li',
+                null,
+                '3'
+              ),
+              _react2.default.createElement(
+                'li',
+                null,
+                '4'
+              ),
+              _react2.default.createElement(
+                'li',
+                null,
+                '5'
+              ),
+              _react2.default.createElement(
+                'li',
+                null,
+                'Next'
               )
-            )
-          )
-        ),
-        _react2.default.createElement(
-          'section',
-          { className: 'listings-results' },
-          this.loopListings()
-        ),
-        _react2.default.createElement(
-          'section',
-          { id: 'pagination' },
-          _react2.default.createElement(
-            'ul',
-            { className: 'pages' },
-            _react2.default.createElement(
-              'li',
-              null,
-              'Prev'
-            ),
-            _react2.default.createElement(
-              'li',
-              { className: 'active' },
-              '1'
-            ),
-            _react2.default.createElement(
-              'li',
-              null,
-              '2'
-            ),
-            _react2.default.createElement(
-              'li',
-              null,
-              '3'
-            ),
-            _react2.default.createElement(
-              'li',
-              null,
-              '4'
-            ),
-            _react2.default.createElement(
-              'li',
-              null,
-              '5'
-            ),
-            _react2.default.createElement(
-              'li',
-              null,
-              'Next'
             )
           )
         )
@@ -985,10 +946,10 @@ var Header = function (_Component) {
     }
   }]);
 
-  return Header;
+  return Listings;
 }(_react.Component);
 
-exports.default = Header;
+exports.default = Listings;
 
 /***/ })
 
