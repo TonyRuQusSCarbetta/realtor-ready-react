@@ -7,15 +7,21 @@ export default class Header extends Component {
       firstName: 'Tony'
     }
     this.loopListings = this.loopListings.bind(this)
+    //by binding loopListingsto this class , it says Hey, i know which version of this you are talking about.
   }
   loopListings () {
-    // var data = this.props.lisitngsData
+    // var data = this.props.lisitngsData is the same as the variable below
     var {listingsData} = this.props
+    //we are able to access listingsData here because we passed it down to this Listings Component in the render section of realEstate.js, so we can use it here with props
 
     if (listingsData == undefined || listingsData.length == 0 ) {
       return "Sorry your filter did not match any listing";
     }
-
+// The map() method is used to apply a function on every element in an array. A new array is then returned.
+// We are looping through each listing (which are objects in an array), and applying a function which returns all this jsx to display each individual listing when called.
+//(we called the function at a parcticular spot in the render section)
+// Each child in an array should have a unique key prop, the second parameter in map represents the index, therefore we set the key equal to index which gives it a unique key/index number.
+// we used inline css for each listing background image, style= has two objects, passing in an ojbect that has the background property with a template string for the value
     return listingsData.map((listing, index) =>{
       return (<div className="listing" key={index}>
         <div className="listing-img" style={{background: `url("${listing.image}") no-repeat center center`}} >
@@ -56,6 +62,7 @@ export default class Header extends Component {
     })
   }
 
+//in the render we called this.loopListings() function in a specific spot which displays each listing.
   render() {
     return (<section id="listings">
       <div className="row">
@@ -79,11 +86,10 @@ export default class Header extends Component {
         </div>
       </section>
       </div>
+
+
       <section className="listings-results">
-
       {this.loopListings()}
-
-
       </section>
 
 

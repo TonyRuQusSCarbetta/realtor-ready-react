@@ -74,7 +74,7 @@ export default class Filter extends Component {
 
           <label htmlFor="extras">
             <span>Swimming Pool</span>
-            <input id="swimming_pool" name="swimming_pool" value="swimming_pool" type="checkbox"onChange={this.props.change}/>
+            <input name="swimming_pool" value="swimming_pool" type="checkbox"onChange={this.props.change}/>
           </label>
 
           <label htmlFor="extras">

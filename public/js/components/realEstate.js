@@ -193,13 +193,17 @@ var App = function (_Component) {
 
       this.setState(_defineProperty({}, name, value), function () {
         console.log(_this2.state);
-        // anytime the state is changed, trigger filteredData function
+        // anytime the state is changed, trigger this callback filteredData function
         _this2.filteredData();
       });
     }
 
     // checks listingsData first than the current state selected by the user, to filter/return the results of the listings
-    //item parameter represents each individual listing being passed through the filter method
+    // the item parameter represents each individual listing being passed through the filter method
+    // The filter() method creates a new array with all elements that pass the test implemented by the provided function.
+    //newData is just our listingsData being filtered under a certain condition
+
+    //for the input boxes
 
   }, {
     key: 'filteredData',
@@ -207,10 +211,12 @@ var App = function (_Component) {
       var _this3 = this;
 
       var newData = this.state.listingsData.filter(function (item) {
-        return item.price >= _this3.state.min_price && item.price <= _this3.state.max_price && item.floorSpace >= _this3.state.min_floor_space && item.floorSpace <= _this3.state.max_floor_space && item.bedrooms >= _this3.state.bedrooms;
+        return item.price >= _this3.state.min_price && item.price <= _this3.state.max_price && item.floorSpace >= _this3.state.min_floor_space && item.floorSpace <= _this3.state.max_floor_space && item.bedrooms >= _this3.state.bedrooms && item.restrooms >= _this3.state.restrooms;
       });
 
-      //Since the lisitngsData value is NOT a number we can't use >= ... So have to check if the current state set by the user is not the default word "All"... than filter/return the results of the item/listing based on the user's selected value.
+      // For the selectboxes, Since the lisitngsData value is NOT a number like price was, we can't use >= ... So have to check if the current state set by the user is not the default word "All"... than filter/return the results of the item/listing based on the user's selected value.
+      //Basically what is returned from the filter method must match the users selection, or else it returns nothing
+
       if (this.state.city != "All") {
         newData = newData.filter(function (item) {
           return item.city == _this3.state.city;
@@ -223,19 +229,47 @@ var App = function (_Component) {
         });
       }
 
-      //fliter the listings data that has swimming_pool
-      // if (this.state.swimming_pool = 'true') {
-      //   newData = newData.filter((item) => {
-      //     return item.swimming_pool == this.state.swimming_pool
-      //   })
-      // }
+      // For the checkboxes.. if the value does not equal false, loop through the listings/item, check the extras category, if it includes the name that was checked, send it to the globalState
+      if (this.state.swimming_pool != false) {
+        newData = newData.filter(function (item) {
+          return item.extras.includes('swimming_pool') == _this3.state.swimming_pool;
+        });
+        console.log(newData);
+      }
 
+      if (this.state.elevator != false) {
+        newData = newData.filter(function (item) {
+          return item.extras.includes('elevator') == _this3.state.elevator;
+        });
+        console.log(newData);
+      }
+
+      if (this.state.garage != false) {
+        newData = newData.filter(function (item) {
+          return item.extras.includes('garage') == _this3.state.garage;
+        });
+        console.log(newData);
+      }
+
+      if (this.state.finished_basement != false) {
+        newData = newData.filter(function (item) {
+          return item.extras.includes('finished_basement') == _this3.state.finished_basement;
+        });
+        console.log(newData);
+      }
+
+      if (this.state.gym != false) {
+        newData = newData.filter(function (item) {
+          return item.extras.includes('gym') == _this3.state.gym;
+        });
+        console.log(newData);
+      }
+
+      //change our current state to what the user has selected via the filter
       this.setState({
         filteredData: newData
       });
     }
-    // <div className=""></div>
-
   }, {
     key: 'render',
     value: function render() {
@@ -549,7 +583,7 @@ var Filter = function (_Component) {
                 null,
                 'Swimming Pool'
               ),
-              _react2.default.createElement('input', { id: 'swimming_pool', name: 'swimming_pool', value: 'swimming_pool', type: 'checkbox', onChange: this.props.change })
+              _react2.default.createElement('input', { name: 'swimming_pool', value: 'swimming_pool', type: 'checkbox', onChange: this.props.change })
             ),
             _react2.default.createElement(
               'label',
@@ -731,20 +765,25 @@ var Header = function (_Component) {
       firstName: 'Tony'
     };
     _this.loopListings = _this.loopListings.bind(_this);
+    //by binding loopListingsto this class , it says Hey, i know which version of this you are talking about.
     return _this;
   }
 
   _createClass(Header, [{
     key: 'loopListings',
     value: function loopListings() {
-      // var data = this.props.lisitngsData
+      // var data = this.props.lisitngsData is the same as the variable below
       var listingsData = this.props.listingsData;
-
+      //we are able to access listingsData here because we passed it down to this Listings Component in the render section of realEstate.js, so we can use it here with props
 
       if (listingsData == undefined || listingsData.length == 0) {
         return "Sorry your filter did not match any listing";
       }
-
+      // The map() method is used to apply a function on every element in an array. A new array is then returned.
+      // We are looping through each listing (which are objects in an array), and applying a function which returns all this jsx to display each individual listing when called.
+      //(we called the function at a parcticular spot in the render section)
+      // Each child in an array should have a unique key prop, the second parameter in map represents the index, therefore we set the key equal to index which gives it a unique key/index number.
+      // we used inline css for each listing background image, style= has two objects, passing in an ojbect that has the background property with a template string for the value
       return listingsData.map(function (listing, index) {
         return _react2.default.createElement(
           'div',
@@ -841,6 +880,9 @@ var Header = function (_Component) {
         );
       });
     }
+
+    //in the render we called this.loopListings() function in a specific spot which displays each listing.
+
   }, {
     key: 'render',
     value: function render() {

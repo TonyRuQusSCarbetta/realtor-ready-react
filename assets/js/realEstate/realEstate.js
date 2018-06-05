@@ -39,13 +39,17 @@ class App extends Component {
       [name]: value
     }, () => {
       console.log(this.state);
-      // anytime the state is changed, trigger filteredData function
+      // anytime the state is changed, trigger this callback filteredData function
       this.filteredData()
     })
   }
 
   // checks listingsData first than the current state selected by the user, to filter/return the results of the listings
-  //item parameter represents each individual listing being passed through the filter method
+  // the item parameter represents each individual listing being passed through the filter method
+  // The filter() method creates a new array with all elements that pass the test implemented by the provided function.
+  //newData is just our listingsData being filtered under a certain condition
+
+//for the input boxes
   filteredData(){
     var newData = this.state.listingsData.filter((item) => {
       return item.price >= this.state.min_price
@@ -53,10 +57,13 @@ class App extends Component {
       && item.floorSpace >= this.state.min_floor_space
       && item.floorSpace <= this.state.max_floor_space
       && item.bedrooms >= this.state.bedrooms
+      && item.restrooms >= this.state.restrooms
 
     })
 
-//Since the lisitngsData value is NOT a number we can't use >= ... So have to check if the current state set by the user is not the default word "All"... than filter/return the results of the item/listing based on the user's selected value.
+// For the selectboxes, Since the lisitngsData value is NOT a number like price was, we can't use >= ... So have to check if the current state set by the user is not the default word "All"... than filter/return the results of the item/listing based on the user's selected value.
+//Basically what is returned from the filter method must match the users selection, or else it returns nothing
+
     if (this.state.city != "All") {
       newData = newData.filter((item) => {
         return item.city == this.state.city
@@ -69,20 +76,49 @@ class App extends Component {
       })
     }
 
+// For the checkboxes.. if the value does not equal false, loop through the listings/item, check the extras category, if it includes the name that was checked, send it to the globalState
+    if(this.state.swimming_pool != false){
+      newData = newData.filter((item) =>{
+        return item.extras.includes('swimming_pool') == this.state.swimming_pool
+      })
+      console.log(newData)
+    }
 
-//fliter the listings data that has swimming_pool
-    // if (this.state.swimming_pool = 'true') {
-    //   newData = newData.filter((item) => {
-    //     return item.swimming_pool == this.state.swimming_pool
-    //   })
-    // }
+    if(this.state.elevator != false){
+      newData = newData.filter((item) =>{
+        return item.extras.includes('elevator') == this.state.elevator
+      })
+      console.log(newData)
+    }
 
+    if(this.state.garage != false){
+      newData = newData.filter((item) =>{
+        return item.extras.includes('garage') == this.state.garage
+      })
+      console.log(newData)
+    }
+
+    if(this.state.finished_basement != false){
+      newData = newData.filter((item) =>{
+        return item.extras.includes('finished_basement') == this.state.finished_basement
+      })
+      console.log(newData)
+    }
+
+    if(this.state.gym != false){
+      newData = newData.filter((item) =>{
+        return item.extras.includes('gym') == this.state.gym
+      })
+      console.log(newData)
+    }
+
+//change our current state to what the user has selected via the filter
     this.setState({
       filteredData: newData
     })
 
   }
-// <div className=""></div>
+
   render () {
     return (<div>
       <Header />
