@@ -9,6 +9,247 @@ webpackJsonp([0],{
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(14);
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+// ------------------------------------------------------------------
+var Listings = function (_Component) {
+  _inherits(Listings, _Component);
+
+  function Listings() {
+    _classCallCheck(this, Listings);
+
+    var _this = _possibleConstructorReturn(this, (Listings.__proto__ || Object.getPrototypeOf(Listings)).call(this));
+
+    _this.state = {
+      firstName: 'Tony'
+    };
+    _this.loopListings = _this.loopListings.bind(_this);
+    //by binding loopListingsto this class , it says Hey, i know which version of this you are talking about.
+    return _this;
+  }
+
+  _createClass(Listings, [{
+    key: 'loopListings',
+    value: function loopListings() {
+      // var data = this.props.lisitngsData is the same as the variable below
+      var listingsData = this.props.listingsData;
+      //we are able to access listingsData here because we passed it down to this Listings Component in the render section of realEstate.js, so we can use it here with props
+
+      if (listingsData == undefined || listingsData.length == 0) {
+        return "Sorry your filter did not match any listing";
+      }
+      // The map() method is used to apply a function on every element in an array. A new array is then returned.
+      // We are looping through each listing (which are objects in an array), and applying a function which returns all this jsx to display each individual listing when called.
+      //(we called the function at a parcticular spot in the render section)
+      // Each child in an array should have a unique key prop, the second parameter in map represents the index, therefore we set the key equal to index which gives it a unique key/index number.
+      // we used inline css for each listing background image, style= has two objects, passing in an ojbect that has the background property with a template string for the value
+      return listingsData.map(function (listing, index) {
+        return _react2.default.createElement(
+          'div',
+          { className: 'listing', key: index },
+          _react2.default.createElement(
+            'div',
+            { className: 'listing-img', style: { background: 'url("' + listing.image + '") no-repeat center center' } },
+            _react2.default.createElement(
+              'span',
+              { className: 'address' },
+              listing.address
+            ),
+            _react2.default.createElement(
+              'div',
+              { className: 'details' },
+              _react2.default.createElement(
+                'div',
+                { className: 'col-md-3' },
+                _react2.default.createElement('div', { className: 'user-image' })
+              ),
+              _react2.default.createElement(
+                'div',
+                { className: 'col-md-9' },
+                _react2.default.createElement(
+                  'div',
+                  { className: 'user-details' },
+                  _react2.default.createElement(
+                    'span',
+                    { className: 'user-name' },
+                    'Marissa Martinez'
+                  ),
+                  _react2.default.createElement(
+                    'span',
+                    { className: 'post-date' },
+                    '05/26/2018'
+                  )
+                )
+              ),
+              _react2.default.createElement(
+                'div',
+                { className: 'col-md-12' },
+                _react2.default.createElement(
+                  'div',
+                  { className: 'listing-details' },
+                  _react2.default.createElement(
+                    'div',
+                    { className: 'floor-space' },
+                    _react2.default.createElement('i', { className: 'far fa-square' }),
+                    _react2.default.createElement(
+                      'span',
+                      null,
+                      listing.floorSpace,
+                      'ft\xB2'
+                    ),
+                    _react2.default.createElement(
+                      'div',
+                      { className: 'bedrooms' },
+                      _react2.default.createElement('i', { className: 'fas fa-bed' }),
+                      _react2.default.createElement(
+                        'span',
+                        null,
+                        listing.bedrooms,
+                        ' bedrooms'
+                      )
+                    )
+                  ),
+                  _react2.default.createElement(
+                    'div',
+                    { className: 'view-btn center' },
+                    'View Listing'
+                  )
+                )
+              )
+            )
+          ),
+          _react2.default.createElement(
+            'div',
+            { className: 'bottom-info' },
+            _react2.default.createElement(
+              'span',
+              { className: 'price' },
+              '$',
+              listing.price
+            ),
+            _react2.default.createElement(
+              'span',
+              { className: 'city' },
+              _react2.default.createElement('i', { className: 'fas fa-map-marker-alt' }),
+              listing.city,
+              ', ',
+              listing.state
+            )
+          )
+        );
+      });
+    }
+
+    //in the render we called this.loopListings() function in a specific spot which displays each listing.
+
+  }, {
+    key: 'render',
+    value: function render() {
+      return _react2.default.createElement(
+        'section',
+        { id: 'listings' },
+        _react2.default.createElement(
+          'div',
+          { className: 'row' },
+          _react2.default.createElement(
+            'section',
+            { className: 'listings-results' },
+            this.loopListings()
+          ),
+          _react2.default.createElement(
+            'section',
+            { id: 'footer' },
+            _react2.default.createElement(
+              'div',
+              { className: 'row' },
+              _react2.default.createElement(
+                'div',
+                { className: 'col-xs-12 flex-container' },
+                _react2.default.createElement(
+                  'a',
+                  { href: 'http://www.tonycarbetta.com', target: '_blank', className: 'hvr-grow' },
+                  _react2.default.createElement('img', { src: 'img/CarbettaCoding-Logo.png', alt: 'CarbettaCoding' })
+                )
+              )
+            )
+          ),
+          _react2.default.createElement(
+            'section',
+            { id: 'pagination' },
+            _react2.default.createElement(
+              'ul',
+              { className: 'pages' },
+              _react2.default.createElement(
+                'li',
+                null,
+                'Prev'
+              ),
+              _react2.default.createElement(
+                'li',
+                { className: 'active' },
+                '1'
+              ),
+              _react2.default.createElement(
+                'li',
+                null,
+                '2'
+              ),
+              _react2.default.createElement(
+                'li',
+                null,
+                '3'
+              ),
+              _react2.default.createElement(
+                'li',
+                null,
+                '4'
+              ),
+              _react2.default.createElement(
+                'li',
+                null,
+                '5'
+              ),
+              _react2.default.createElement(
+                'li',
+                null,
+                'Next'
+              )
+            )
+          )
+        )
+      );
+    }
+  }]);
+
+  return Listings;
+}(_react.Component);
+
+exports.default = Listings;
+
+/***/ }),
+
+/***/ 101:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
 var listingsData = [{
   address: '77 Hollywood Blvd',
   city: 'Los Angeles',
@@ -30,7 +271,7 @@ var listingsData = [{
   floorSpace: 3900,
   extras: ['elevator', 'garage'],
   homeType: 'Apartment',
-  image: 'https://cdn.vox-cdn.com/thumbor/d34hMccFF_L--7D3mmXX0nk9ro8=/0x0:900x600/920x690/filters:focal(378x228:522x372):format(webp):no_upscale()/cdn.vox-cdn.com/uploads/chorus_image/image/59780343/204413204.0.jpg'
+  image: 'http://www.hotel-r.net/im/hotel/hr/amazing-view-apartments-18.jpg'
   // 'https://cdn.vox-cdn.com/thumbor/FxSsbaksW3lxunrTcQDgCRBS3jY=/0x0:900x600/920x690/filters:focal(378x228:522x372):no_upscale()/cdn.vox-cdn.com/uploads/chorus_image/image/59780339/atelier85mil.0.0.gif'
 
 }, {
@@ -109,7 +350,7 @@ exports.default = listingsData;
 
 /***/ }),
 
-/***/ 102:
+/***/ 103:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -117,7 +358,7 @@ exports.default = listingsData;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _react = __webpack_require__(16);
+var _react = __webpack_require__(14);
 
 var _react2 = _interopRequireDefault(_react);
 
@@ -125,7 +366,7 @@ var _reactDom = __webpack_require__(33);
 
 var _reactDom2 = _interopRequireDefault(_reactDom);
 
-var _Header = __webpack_require__(98);
+var _Header = __webpack_require__(99);
 
 var _Header2 = _interopRequireDefault(_Header);
 
@@ -133,11 +374,15 @@ var _Filter = __webpack_require__(97);
 
 var _Filter2 = _interopRequireDefault(_Filter);
 
-var _Listings = __webpack_require__(99);
+var _Listings = __webpack_require__(100);
 
 var _Listings2 = _interopRequireDefault(_Listings);
 
-var _listingsData = __webpack_require__(100);
+var _Footer = __webpack_require__(98);
+
+var _Footer2 = _interopRequireDefault(_Footer);
+
+var _listingsData = __webpack_require__(101);
 
 var _listingsData2 = _interopRequireDefault(_listingsData);
 
@@ -319,7 +564,7 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _react = __webpack_require__(16);
+var _react = __webpack_require__(14);
 
 var _react2 = _interopRequireDefault(_react);
 
@@ -651,7 +896,76 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _react = __webpack_require__(16);
+var _react = __webpack_require__(14);
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+// ------------------------------------------------------------------
+var Listings = function (_Component) {
+  _inherits(Listings, _Component);
+
+  function Listings() {
+    _classCallCheck(this, Listings);
+
+    var _this = _possibleConstructorReturn(this, (Listings.__proto__ || Object.getPrototypeOf(Listings)).call(this));
+
+    _this.state = {
+      firstName: 'Tony'
+    };
+    return _this;
+  }
+
+  _createClass(Listings, [{
+    key: 'render',
+    value: function render() {
+      return _react2.default.createElement(
+        'section',
+        { id: 'footer' },
+        _react2.default.createElement(
+          'div',
+          { className: 'row' },
+          _react2.default.createElement(
+            'div',
+            { className: 'col-xs-12 flex-container hvr-grow img-fluid' },
+            _react2.default.createElement(
+              'a',
+              { href: 'http://www.tonycarbetta.com' },
+              _react2.default.createElement('img', { src: 'img/CarbettaCoding-Logo.png', alt: 'CarbettaCoding' })
+            )
+          )
+        )
+      );
+    }
+  }]);
+
+  return Listings;
+}(_react.Component);
+
+exports.default = Listings;
+
+/***/ }),
+
+/***/ 99:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(14);
 
 var _react2 = _interopRequireDefault(_react);
 
@@ -727,230 +1041,6 @@ var Header = function (_Component) {
 
 exports.default = Header;
 
-/***/ }),
-
-/***/ 99:
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _react = __webpack_require__(16);
-
-var _react2 = _interopRequireDefault(_react);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-// ------------------------------------------------------------------
-var Listings = function (_Component) {
-  _inherits(Listings, _Component);
-
-  function Listings() {
-    _classCallCheck(this, Listings);
-
-    var _this = _possibleConstructorReturn(this, (Listings.__proto__ || Object.getPrototypeOf(Listings)).call(this));
-
-    _this.state = {
-      firstName: 'Tony'
-    };
-    _this.loopListings = _this.loopListings.bind(_this);
-    //by binding loopListingsto this class , it says Hey, i know which version of this you are talking about.
-    return _this;
-  }
-
-  _createClass(Listings, [{
-    key: 'loopListings',
-    value: function loopListings() {
-      // var data = this.props.lisitngsData is the same as the variable below
-      var listingsData = this.props.listingsData;
-      //we are able to access listingsData here because we passed it down to this Listings Component in the render section of realEstate.js, so we can use it here with props
-
-      if (listingsData == undefined || listingsData.length == 0) {
-        return "Sorry your filter did not match any listing";
-      }
-      // The map() method is used to apply a function on every element in an array. A new array is then returned.
-      // We are looping through each listing (which are objects in an array), and applying a function which returns all this jsx to display each individual listing when called.
-      //(we called the function at a parcticular spot in the render section)
-      // Each child in an array should have a unique key prop, the second parameter in map represents the index, therefore we set the key equal to index which gives it a unique key/index number.
-      // we used inline css for each listing background image, style= has two objects, passing in an ojbect that has the background property with a template string for the value
-      return listingsData.map(function (listing, index) {
-        return _react2.default.createElement(
-          'div',
-          { className: 'listing', key: index },
-          _react2.default.createElement(
-            'div',
-            { className: 'listing-img', style: { background: 'url("' + listing.image + '") no-repeat center center' } },
-            _react2.default.createElement(
-              'span',
-              { className: 'address' },
-              listing.address
-            ),
-            _react2.default.createElement(
-              'div',
-              { className: 'details' },
-              _react2.default.createElement(
-                'div',
-                { className: 'col-md-3' },
-                _react2.default.createElement('div', { className: 'user-image' })
-              ),
-              _react2.default.createElement(
-                'div',
-                { className: 'col-md-9' },
-                _react2.default.createElement(
-                  'div',
-                  { className: 'user-details' },
-                  _react2.default.createElement(
-                    'span',
-                    { className: 'user-name' },
-                    'Marissa Martinez'
-                  ),
-                  _react2.default.createElement(
-                    'span',
-                    { className: 'post-date' },
-                    '05/26/2018'
-                  )
-                )
-              ),
-              _react2.default.createElement(
-                'div',
-                { className: 'col-md-12' },
-                _react2.default.createElement(
-                  'div',
-                  { className: 'listing-details' },
-                  _react2.default.createElement(
-                    'div',
-                    { className: 'floor-space' },
-                    _react2.default.createElement('i', { className: 'far fa-square' }),
-                    _react2.default.createElement(
-                      'span',
-                      null,
-                      listing.floorSpace,
-                      'ft\xB2'
-                    ),
-                    _react2.default.createElement(
-                      'div',
-                      { className: 'bedrooms' },
-                      _react2.default.createElement('i', { className: 'fas fa-bed' }),
-                      _react2.default.createElement(
-                        'span',
-                        null,
-                        listing.bedrooms,
-                        ' bedrooms'
-                      )
-                    )
-                  ),
-                  _react2.default.createElement(
-                    'div',
-                    { className: 'view-btn center' },
-                    'View Listing'
-                  )
-                )
-              )
-            )
-          ),
-          _react2.default.createElement(
-            'div',
-            { className: 'bottom-info' },
-            _react2.default.createElement(
-              'span',
-              { className: 'price' },
-              '$',
-              listing.price
-            ),
-            _react2.default.createElement(
-              'span',
-              { className: 'city' },
-              _react2.default.createElement('i', { className: 'fas fa-map-marker-alt' }),
-              listing.city,
-              ', ',
-              listing.state
-            )
-          )
-        );
-      });
-    }
-
-    //in the render we called this.loopListings() function in a specific spot which displays each listing.
-
-  }, {
-    key: 'render',
-    value: function render() {
-      return _react2.default.createElement(
-        'section',
-        { id: 'listings' },
-        _react2.default.createElement(
-          'div',
-          { className: 'row' },
-          _react2.default.createElement(
-            'section',
-            { className: 'listings-results' },
-            this.loopListings()
-          ),
-          _react2.default.createElement(
-            'section',
-            { id: 'pagination' },
-            _react2.default.createElement(
-              'ul',
-              { className: 'pages' },
-              _react2.default.createElement(
-                'li',
-                null,
-                'Prev'
-              ),
-              _react2.default.createElement(
-                'li',
-                { className: 'active' },
-                '1'
-              ),
-              _react2.default.createElement(
-                'li',
-                null,
-                '2'
-              ),
-              _react2.default.createElement(
-                'li',
-                null,
-                '3'
-              ),
-              _react2.default.createElement(
-                'li',
-                null,
-                '4'
-              ),
-              _react2.default.createElement(
-                'li',
-                null,
-                '5'
-              ),
-              _react2.default.createElement(
-                'li',
-                null,
-                'Next'
-              )
-            )
-          )
-        )
-      );
-    }
-  }]);
-
-  return Listings;
-}(_react.Component);
-
-exports.default = Listings;
-
 /***/ })
 
-},[102]);
+},[103]);

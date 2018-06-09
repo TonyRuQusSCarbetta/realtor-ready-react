@@ -74,6 +74,13 @@ export default class Listings extends Component {
       {this.loopListings()}
       </section>
 
+      <section id="footer">
+      <div className="row">
+        <div className="col-xs-12 flex-container">
+          <a href="http://www.tonycarbetta.com" target="_blank" className="hvr-grow"><img src="img/CarbettaCoding-Logo.png" alt="CarbettaCoding"/></a>
+        </div>
+      </div>
+      </section>
 
       <section id="pagination">
         <ul className="pages">
@@ -85,6 +92,8 @@ export default class Listings extends Component {
           <li>5</li>
           <li>Next</li>
         </ul>
+
+
 
       </section>
       </div>
